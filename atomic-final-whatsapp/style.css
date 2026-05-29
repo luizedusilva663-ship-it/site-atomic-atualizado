@@ -1,0 +1,476 @@
+:root {
+    --primary-color: #FFD700; /* Amarelo vibrante */
+    --secondary-color: #0A0A0A; /* Preto */
+    --text-color: #FFFFFF; /* Branco */
+    --accent-color: #00CFFF; /* Azul neon */
+    --font-family-titles: 'Montserrat', sans-serif;
+    --font-family-body: 'Roboto', sans-serif;
+}
+
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-body);
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Tipografia */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-titles);
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 3.8em;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+h2 {
+    font-size: 1.6em;
+    color: var(--text-color);
+    font-weight: 400;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.text-block {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-size: 1.15em;
+    color: var(--text-color);
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Botões */
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    background-color: #e6c200;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Botão Fixo WhatsApp */
+.whatsapp-button-fixed {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366; /* Cor do WhatsApp */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-button-fixed:hover {
+    transform: translateY(-8px) scale(1.05);
+    background-color: #1DA851;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.whatsapp-button-fixed img {
+    margin-right: 10px;
+    width: 28px;
+    height: 28px;
+}
+
+/* HERO SECTION */
+.hero-section {
+    background: linear-gradient(45deg, var(--secondary-color) 0%, #1a1a1a 50%, var(--secondary-color) 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0;
+    text-align: center;
+    min-height: 100vh; /* Garante que a hero section ocupe a tela inteira */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><line x1="0" y1="0" x2="100" y2="100" stroke="%2300CFFF" stroke-width="0.5"/><line x1="100" y1="0" x2="0" y2="100" stroke="%2300CFFF" stroke-width="0.5"/></svg>') no-repeat center center;
+    background-size: cover;
+    opacity: 0.15;
+    z-index: 0;
+    animation: backgroundPan 30s linear infinite alternate;
+}
+
+@keyframes backgroundPan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeInScale 1.8s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.logo img {
+    max-width: 220px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+}
+
+/* Seções Gerais */
+section {
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section:nth-of-type(even) {
+    background-color: #1a1a1a;
+}
+
+.bullet-list {
+    list-style: none;
+    padding: 0;
+    max-width: 650px;
+    margin: 0 auto 40px auto;
+    text-align: left;
+}
+
+.bullet-list li {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="%23FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') no-repeat left center;
+    background-size: 22px;
+    padding-left: 35px;
+    margin-bottom: 18px;
+    font-size: 1.15em;
+    color: var(--text-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.bullet-list li:hover {
+    transform: translateX(8px);
+    color: var(--accent-color);
+}
+
+/* Como Funciona */
+.how-it-works-steps {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.step {
+    background-color: #1a1a1a;
+    border: 1px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 35px;
+    width: 320px;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 0 20px rgba(0, 207, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 250px;
+}
+
+.step:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 207, 255, 0.5);
+}
+
+.step-number {
+    font-family: var(--font-family-titles);
+    font-size: 3em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.step-title {
+    font-family: var(--font-family-titles);
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.step-description {
+    color: var(--text-color);
+    font-size: 1.05em;
+}
+
+/* FAQ */
+.faq-item {
+    max-width: 850px;
+    margin: 0 auto 25px auto;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    font-family: var(--font-family-titles);
+    font-size: 1.3em;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 18px 0;
+    position: relative;
+    transition: color 0.3s ease;
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+}
+
+.faq-question:hover {
+    color: var(--accent-color);
+}
+
+.faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6em;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active::after {
+    content: '-'; /* Muda para '-' quando ativo */
+    transform: translateY(-50%) rotate(0deg); /* Remove a rotação */
+}
+
+.faq-answer {
+    font-size: 1.05em;
+    color: var(--text-color);
+    padding: 0 0 15px 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-out, padding 0.6s ease-out;
+}
+
+.faq-answer.show {
+    max-height: 300px; /* Valor arbitrário grande o suficiente para o conteúdo */
+    padding: 0 0 20px 0;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 50px 0;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+footer .logo img {
+    max-width: 180px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+footer p {
+    margin-bottom: 12px;
+    font-size: 0.95em;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--accent-color);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    h3 {
+        font-size: 2.4em;
+    }
+    .cta-button {
+        padding: 16px 30px;
+        font-size: 1.1em;
+    }
+    .whatsapp-button-fixed {
+        padding: 14px 22px;
+        font-size: 1em;
+    }
+    .whatsapp-button-fixed img {
+        width: 26px;
+        height: 26px;
+    }
+    .step {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    h3 {
+        font-size: 2em;
+    }
+    section {
+        padding: 80px 0;
+    }
+    .step {
+        width: 90%;
+        min-height: unset;
+    }
+    .bullet-list {
+        max-width: 90%;
+    }
+    .faq-item {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    h3 {
+        font-size: 1.8em;
+    }
+    .container {
+        padding: 15px;
+    }
+    .cta-button {
+        padding: 14px 25px;
+        font-size: 1em;
+    }
+    .whatsapp-button-fixed {
+        padding: 12px 20px;
+        font-size: 0.9em;
+        bottom: 15px;
+        right: 15px;
+    }
+    .whatsapp-button-fixed img {
+        width: 22px;
+        height: 22px;
+    }
+    .logo img {
+        max-width: 180px;
+    }
+    footer .logo img {
+        max-width: 130px;
+    }
+}
